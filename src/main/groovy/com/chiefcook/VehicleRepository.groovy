@@ -6,36 +6,35 @@ import org.springframework.stereotype.Repository
 @Repository
 class VehicleRepository {
 
-    String file = 'vehicles.json'
+    File vehicleFile
+
+    VehicleRepository() {
+        vehicleFile = new File('vehicles.json')
+    }
 
     Vehicle save(Vehicle vehicle) {
-        File f = new File(file)
-
-        List vehicles = f.exists() ? new JsonSlurper().parse(new File(file)) : []
+        List vehicles = vehicleFile.exists() ? new JsonSlurper().parse(vehicleFile) : []
 
         vehicle.setId(UUID.randomUUID().toString())
 
         vehicles << vehicle
 
-        f.delete()
+        vehicleFile.delete()
 
-        f << JsonOutput.toJson(vehicles)
+        vehicleFile << JsonOutput.toJson(vehicles)
 
         return vehicle
 
     }
 
     Vehicle findById(String id) {
-        File f = new File(file)
 
-        List vehicles =  new JsonSlurper().parse(new File(file))
+        List vehicles =  new JsonSlurper().parse(vehicleFile)
 
         return vehicles.find({it.id == id})
     }
 
     List find() {
-        File f = new File(file)
-
-        return  new JsonSlurper().parse(new File(file))
+        return new JsonSlurper().parse(vehicleFile)
     }
 }
