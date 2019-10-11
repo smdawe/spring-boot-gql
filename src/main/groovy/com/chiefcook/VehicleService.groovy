@@ -21,7 +21,7 @@ class VehicleService {
     }
 
     List<Vehicle> getAllVehicles(final int count) {
-        return this.vehicleRepository.find()
+        return this.vehicleRepository.find().take(count)
     }
 
     Vehicle getVehicle(final String id) {

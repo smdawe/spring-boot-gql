@@ -31,10 +31,10 @@ class VehicleRepository {
 
         List vehicles =  new JsonSlurper().parse(vehicleFile)
 
-        return vehicles.find({it.id == id})
+        return Vehicle.fromMap(vehicles.find({it.id == id}))
     }
 
-    List find() {
-        return new JsonSlurper().parse(vehicleFile)
+    List<Vehicle> find() {
+        return new JsonSlurper().parse(vehicleFile).collect{return Vehicle.fromMap(it)}
     }
 }
