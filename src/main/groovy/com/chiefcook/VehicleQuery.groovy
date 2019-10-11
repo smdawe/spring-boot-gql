@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class VehicleQuery implements GraphQLQueryResolver {
     @Autowired
-    private VehicleService vehicleService;
+    private VehicleService vehicleService
 
     List<Vehicle> getVehicles(final int count) {
         return this.vehicleService.getAllVehicles(count)

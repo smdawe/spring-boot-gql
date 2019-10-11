@@ -12,6 +12,6 @@ class VehicleMutation implements GraphQLMutationResolver {
     private VehicleService vehicleService
 
     Vehicle createVehicle(final String type, final String modelCode, final String brandName, final String launchDate) {
-        return this.vehicleService.createVehicle(type, modelCode, brandName, launchDate);
+        return this.vehicleService.createVehicle(type, modelCode, brandName, launchDate)
     }
 }
