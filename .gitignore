@@ -1,0 +1,16 @@
+.idea
+out
+.gradle
+.vertx
+build
+*.iml
+*.ipr
+*.iws
+/bin/
+.settings/
+.project
+.editorconfig
+vehicles.json
+gradle/
+gradlew
+gradlew.bat
